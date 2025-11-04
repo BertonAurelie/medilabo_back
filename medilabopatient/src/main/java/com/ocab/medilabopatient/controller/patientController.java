@@ -1,8 +1,10 @@
 package com.ocab.medilabopatient.controller;
 
 import com.ocab.medilabopatient.model.Patient;
+import com.ocab.medilabopatient.model.dto.request.PatientDto;
 import com.ocab.medilabopatient.model.dto.response.PatientWithAgeDto;
 import com.ocab.medilabopatient.service.PatientService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.repository.query.Param;
@@ -44,7 +46,7 @@ public class patientController {
      * @return
      */
     @PostMapping
-    public ResponseEntity<Patient> addPatient(@RequestBody Patient patient){
+    public ResponseEntity<Patient> addPatient(@RequestBody @Valid PatientDto patient){
         logger.info("adding new patient..");
         return new ResponseEntity<>(patientService.addPatient(patient), HttpStatus.CREATED);
     }

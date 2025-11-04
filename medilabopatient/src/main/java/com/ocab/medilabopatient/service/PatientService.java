@@ -1,7 +1,10 @@
 package com.ocab.medilabopatient.service;
 
+import com.ocab.medilabopatient.exception.MedilaboPatientException;
 import com.ocab.medilabopatient.model.Patient;
+import com.ocab.medilabopatient.model.dto.mapper.PatientDtoMapper;
 import com.ocab.medilabopatient.model.dto.mapper.PatientWithAgeMapper;
+import com.ocab.medilabopatient.model.dto.request.PatientDto;
 import com.ocab.medilabopatient.model.dto.response.PatientWithAgeDto;
 import com.ocab.medilabopatient.repository.PatientRepository;
 import org.slf4j.Logger;
@@ -46,12 +49,15 @@ public class PatientService {
     }
 
     //Ajout d'un patient
-    public Patient addPatient(Patient patient) {
+    public Patient addPatient(PatientDto dto) {
+        Patient patient = new PatientDtoMapper().toEntity(dto);
+
         if (patientRepository.findByLastNameAndFirstName(patient.getLastName(), patient.getFirstName()).isEmpty()) {
             logger.info("patient inconnu, enregistrement en cours");
             patientRepository.save(patient);
         } else {
-            logger.info("patient déjà enregistré{} ", patientRepository.findByLastName(patient.getLastName()).toString());
+            logger.info("patient déjà enregistré");
+            throw new MedilaboPatientException("patient already saved ");
         }
         return patient;
     }
