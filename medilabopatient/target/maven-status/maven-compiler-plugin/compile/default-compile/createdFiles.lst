@@ -1,8 +1,0 @@
-com\ocab\medilabopatient\model\dto\response\PatientWithAgeDto.class
-com\ocab\medilabopatient\controller\patientController.class
-com\ocab\medilabopatient\MedilabopatientApplication.class
-com\ocab\medilabopatient\service\PatientService.class
-com\ocab\medilabopatient\model\dto\mapper\PatientWithAgeMapper.class
-com\ocab\medilabopatient\repository\PatientRepository.class
-com\ocab\medilabopatient\model\dto\request\t.class
-com\ocab\medilabopatient\model\Patient.class

@@ -18,6 +18,7 @@ public class PatientWithAgeMapper {
         entity.setGender(dto.getGender());
         entity.setAddress(dto.getAddress());
         entity.setPhoneNumber(dto.getPhoneNumber());
+        entity.setEmail(dto.getEmail());
 
         return entity;
     }
@@ -32,6 +33,7 @@ public class PatientWithAgeMapper {
             dto.setGender(entity.getGender());
             dto.setAddress(entity.getAddress());
             dto.setPhoneNumber(entity.getPhoneNumber());
+            dto.setEmail(entity.getEmail());
             dto.setAge(age);
 
         return dto;

@@ -29,7 +29,7 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
-    public PatientWithAgeDto getPatientInfo(String id) {
+    public PatientWithAgeDto getPatientInfo(int id) {
         PatientWithAgeDto patientToDto = new PatientWithAgeDto();
         int age;
         Optional<Patient> patient = patientRepository.findById(id);
@@ -42,7 +42,6 @@ public class PatientService {
             patientToDto = new PatientWithAgeMapper().toDto(optionalToPatient, age);
 
         }
-
         return patientToDto ;
     }
 
@@ -53,7 +52,6 @@ public class PatientService {
             patientRepository.save(patient);
         } else {
             logger.info("patient déjà enregistré{} ", patientRepository.findByLastName(patient.getLastName()).toString());
-
         }
         return patient;
     }
@@ -65,11 +63,29 @@ public class PatientService {
 
         if (optionalPatient.isPresent()) {
             Patient patientToUpdate = optionalPatient.get();
-            patientToUpdate.setLastName(patient.getLastName());
-            patientToUpdate.setFirstName(patient.getFirstName());
-            patientToUpdate.setBirthday(patient.getBirthday());
-            patientToUpdate.setAddress(patient.getAddress());
-            patientToUpdate.setGender(patient.getGender());
+
+            if(patient.getLastName() != null){
+                patientToUpdate.setLastName(patient.getLastName());
+            }
+            if(patient.getFirstName() != null){
+                patientToUpdate.setFirstName(patient.getFirstName());
+            }
+
+            if(patient.getBirthday() != null){
+                patientToUpdate.setBirthday(patient.getBirthday());
+            }
+
+            if(patient.getAddress() != null){
+                patientToUpdate.setAddress(patient.getAddress());
+            }
+
+            if(patient.getGender() != null){
+                patientToUpdate.setGender(patient.getGender());
+            }
+
+            if(patient.getEmail() != null){
+                patientToUpdate.setEmail(patient.getEmail());
+            }
 
             logger.info("sauvegarde du patient modifié");
             patientRepository.save(patientToUpdate);
@@ -81,7 +97,7 @@ public class PatientService {
     }
 
     //suppression d'un patient
-    public void deletePatient(String id) {
+    public void deletePatient(int id) {
         if (patientRepository.existsById(id)) {
             logger.info("suppression de l'utilisateur");
             patientRepository.deleteById(id);

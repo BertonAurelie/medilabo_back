@@ -1,7 +1,7 @@
 C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabopatient\src\main\java\com\ocab\medilabopatient\controller\patientController.java
 C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabopatient\src\main\java\com\ocab\medilabopatient\MedilabopatientApplication.java
 C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabopatient\src\main\java\com\ocab\medilabopatient\model\dto\mapper\PatientWithAgeMapper.java
-C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabopatient\src\main\java\com\ocab\medilabopatient\model\dto\request\t.java
+C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabopatient\src\main\java\com\ocab\medilabopatient\model\dto\request\PatientDto.java
 C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabopatient\src\main\java\com\ocab\medilabopatient\model\dto\response\PatientWithAgeDto.java
 C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabopatient\src\main\java\com\ocab\medilabopatient\model\Patient.java
 C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabopatient\src\main\java\com\ocab\medilabopatient\repository\PatientRepository.java

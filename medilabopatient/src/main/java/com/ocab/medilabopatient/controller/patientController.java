@@ -9,7 +9,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 import java.util.List;
+
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -29,25 +32,31 @@ public class patientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PatientWithAgeDto> getPatientData(@PathVariable String id){
+    public ResponseEntity<PatientWithAgeDto> getPatientData(@PathVariable int id){
         logger.info("looking for patient info...");
         return new ResponseEntity<>(patientService.getPatientInfo(id), HttpStatus.OK);
     }
 
+
+    /**
+     * Add a new patient
+     * @param patient
+     * @return
+     */
     @PostMapping
-    public ResponseEntity<Patient> addPatient(Patient patient){
+    public ResponseEntity<Patient> addPatient(@RequestBody Patient patient){
         logger.info("adding new patient..");
         return new ResponseEntity<>(patientService.addPatient(patient), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient){
+    public ResponseEntity<Patient> updatePatient(@RequestBody  Patient patient){
         logger.info("updating patient...");
         return new ResponseEntity<>(patientService.updatePatient(patient), HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<String> deletePatient(@PathVariable String id) {
+    @DeleteMapping
+    public ResponseEntity<String> deletePatient(@RequestParam int id) {
         logger.info("deleting patient...");
         patientService.deletePatient(id);
         return new ResponseEntity<>("patient deleted", HttpStatus.OK);
