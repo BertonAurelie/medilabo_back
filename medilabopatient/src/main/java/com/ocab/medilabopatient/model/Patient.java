@@ -7,7 +7,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name="patient")
+@Table(name = "patient")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Patient {
     private String address;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
     public Patient() {
@@ -44,10 +44,6 @@ public class Patient {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {

@@ -1,7 +1,17 @@
 package com.ocab.medilabopatient.exception;
 
-public class MedilaboPatientException extends RuntimeException{
-    public MedilaboPatientException(String errorMessage){
+import org.springframework.http.HttpStatus;
+
+public class MedilaboPatientException extends RuntimeException {
+    private final HttpStatus status;
+
+    public MedilaboPatientException(String errorMessage, HttpStatus status) {
         super(errorMessage);
+        this.status = status;
+    }
+
+
+    public HttpStatus getStatus() {
+        return status;
     }
 }

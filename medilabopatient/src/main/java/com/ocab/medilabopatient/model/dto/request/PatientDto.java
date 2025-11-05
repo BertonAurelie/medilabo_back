@@ -27,10 +27,11 @@ public class PatientDto {
 
     private String address;
 
-    @Pattern(regexp="^(\\d{3}[- .]?){2}\\d{4}$", message = "phone number invalid") //phoneNumber with Whitespaces, Dots or Hyphens
+    @Pattern(regexp = "^(\\d{3}[- .]?){2}\\d{4}$", message = "phone number invalid")
+    //phoneNumber with Whitespaces, Dots or Hyphens
     private String phoneNumber;
 
-    @NotBlank(message="email may not be empty")
+    @NotBlank(message = "email may not be empty")
     @Email(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
     private String email;
 

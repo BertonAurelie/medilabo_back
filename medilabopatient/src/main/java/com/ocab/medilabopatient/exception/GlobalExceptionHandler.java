@@ -15,7 +15,7 @@ import java.util.List;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(MedilaboPatientException.class)
-    public ResponseEntity<ErrorEntity> badRequestException(MedilaboPatientException exception){
+    public ResponseEntity<ErrorEntity> badRequestException(MedilaboPatientException exception) {
         ErrorEntity error = new ErrorEntity(exception.getMessage());
 
         return ResponseEntity.status(HttpStatus.OK.value()).body(error);
@@ -34,9 +34,11 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<ErrorEntity> HttpMessageNotReadableException(HttpMessageNotReadableException exception){
+    public ResponseEntity<ErrorEntity> HttpMessageNotReadableException(HttpMessageNotReadableException exception) {
         ErrorEntity error = new ErrorEntity(exception.getMessage());
 
         return ResponseEntity.status(HttpStatus.OK.value()).body(error);
     }
+
+
 }

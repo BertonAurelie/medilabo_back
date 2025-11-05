@@ -1,26 +1,45 @@
-package com.ocab.medilabopatient.model.dto.response;
+package com.ocab.medilabopatient.model.dto.request;
 
-
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public class PatientWithAgeDto {
+public class PatientUpdatedDto {
     private int id;
     private String firstName;
     private String lastName;
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     private String gender;
-    private String address;
-    private String phoneNumber;
-    private String email;
-    private int age;
 
-    public PatientWithAgeDto() {
+    private String address;
+
+    @Pattern(regexp = "^(\\d{3}[- .]?){2}\\d{4}$", message = "phone number invalid")
+    //phoneNumber with Whitespaces, Dots or Hyphens
+    private String phoneNumber;
+
+    @Email(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
+    private String email;
+
+    public PatientUpdatedDto() {
     }
 
+    public PatientUpdatedDto(int id, String firstName, String lastName, Date birthday, String gender, String address, String phoneNumber, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
 
     public int getId() {
         return id;
@@ -76,14 +95,6 @@ public class PatientWithAgeDto {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getEmail() {
