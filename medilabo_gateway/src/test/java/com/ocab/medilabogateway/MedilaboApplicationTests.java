@@ -1,4 +1,4 @@
-package com.ocab.medilabo.medilabo;
+package com.ocab.medilabogateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
