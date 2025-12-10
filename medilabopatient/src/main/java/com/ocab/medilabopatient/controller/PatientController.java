@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 /**
@@ -19,7 +18,7 @@ import java.util.List;
  * add crossOrigin uri to communicate with front-end
  */
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/patient")
 public class PatientController {
@@ -37,6 +36,7 @@ public class PatientController {
      */
     @GetMapping
     public ResponseEntity<List<Patient>> getAllData() {
+
         logger.info("Executing getAllPatients");
         return new ResponseEntity<>(patientService.getAllPatient(), HttpStatus.OK);
     }
@@ -53,11 +53,13 @@ public class PatientController {
      * @param patient dto valid
      * @return patient added
      */
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Patient> addPatient(@RequestBody @Valid PatientDto patient) {
         logger.info("adding new patient..");
         return new ResponseEntity<>(patientService.addPatient(patient), HttpStatus.CREATED);
     }
+
+
 
     /**
      * Update an existed patient
@@ -77,7 +79,7 @@ public class PatientController {
      * @param id
      * @return true if patient deleted
      */
-    @DeleteMapping
+    @DeleteMapping()
     public ResponseEntity<Void> deletePatient(@RequestParam int id) {
         logger.info("deleting patient...");
         patientService.deletePatient(id);

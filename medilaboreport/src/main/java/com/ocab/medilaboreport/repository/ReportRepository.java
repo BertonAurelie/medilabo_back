@@ -9,4 +9,7 @@ import java.util.List;
 @Repository
 public interface ReportRepository extends MongoRepository<Report, String> {
     List<Report> findByPatient(int id);
+    List<Report> findByPatientOrderByDateNoteDesc(int id);
+
+    void deleteAllByPatient(int id);
 }

@@ -34,6 +34,7 @@ public class PatientDto {
     @NotBlank(message = "email may not be empty")
     @Email(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
     private String email;
+    private String password;
 
     public PatientDto() {
     }
@@ -92,5 +93,13 @@ public class PatientDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

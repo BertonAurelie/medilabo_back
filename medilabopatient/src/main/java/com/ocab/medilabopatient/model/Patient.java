@@ -16,7 +16,7 @@ public class Patient {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "birthday")
     private Date birthday;
     @Column(name = "gender")
@@ -27,6 +27,10 @@ public class Patient {
     private String phoneNumber;
     @Column(name = "email")
     private String email;
+    @Column(name = "role")
+    private String role;
+    @Column(name = "password")
+    private String password;
 
     public Patient() {
     }
@@ -40,6 +44,19 @@ public class Patient {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public Patient(int id, String firstName, String lastName, Date birthday, String gender, String address, String phoneNumber, String email, String role, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.role = role;
+        this.password = password;
     }
 
     public int getId() {
@@ -100,5 +117,21 @@ public class Patient {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

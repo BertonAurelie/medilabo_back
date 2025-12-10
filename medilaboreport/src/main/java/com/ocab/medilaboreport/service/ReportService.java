@@ -27,7 +27,7 @@ public class ReportService {
 
     public List<Report> getAllReportOfThisPatient(int id){
         logger.info("research reports to this patient...");
-        return reportRepository.findByPatient(id);
+        return reportRepository.findByPatientOrderByDateNoteDesc(id);
     }
 
     public Report addReport(Report report){
@@ -36,5 +36,10 @@ public class ReportService {
         }
         report.setDateNote(new Date());
         return reportRepository.save(report);
+    }
+
+    public void deleteAllReports(int id){
+        logger.info("research report with this id patient....");
+        reportRepository.deleteAllByPatient(id);
     }
 }

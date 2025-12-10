@@ -11,8 +11,8 @@ import com.ocab.medilabopatient.repository.PatientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -23,10 +23,12 @@ import java.util.Optional;
 @Service
 public class PatientService {
     private final PatientRepository patientRepository;
+    private final PasswordEncoder passwordEncoder;
     private static final Logger logger = LoggerFactory.getLogger(PatientService.class);
 
-    public PatientService(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, PasswordEncoder passwordEncoder) {
         this.patientRepository = patientRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     //Liste de patients
@@ -59,6 +61,7 @@ public class PatientService {
 
         if (patientRepository.findByEmail(patient.getEmail()).isEmpty()) {
             logger.info("patient inconnu, enregistrement en cours");
+            patient.setPassword(passwordEncoder.encode(dto.getPassword()));
             patient = patientRepository.save(patient);
         } else {
             logger.info("patient déjà enregistré");

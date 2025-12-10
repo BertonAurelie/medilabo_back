@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 @RequestMapping("/report")
 public class ReportController {
@@ -38,5 +38,12 @@ public class ReportController {
     public ResponseEntity<Report> addnewReport(@RequestBody Report report){
         logger.info("add new report....");
         return new ResponseEntity<>(reportService.addReport(report), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping()
+    public ResponseEntity<Void> deleteReports(@RequestParam int id){
+        logger.info("connection to delete reports...");
+        reportService.deleteAllReports(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

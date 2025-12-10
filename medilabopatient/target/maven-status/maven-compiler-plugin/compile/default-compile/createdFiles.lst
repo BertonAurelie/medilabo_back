@@ -4,6 +4,7 @@ com\ocab\medilabopatient\model\dto\response\PatientWithAgeDto.class
 com\ocab\medilabopatient\MedilabopatientApplication.class
 com\ocab\medilabopatient\model\dto\request\PatientUpdatedDto.class
 com\ocab\medilabopatient\service\PatientService.class
+com\ocab\medilabopatient\config\PasswordConfig.class
 com\ocab\medilabopatient\model\dto\mapper\PatientWithAgeMapper.class
 com\ocab\medilabopatient\exception\GlobalExceptionHandler.class
 com\ocab\medilabopatient\repository\PatientRepository.class

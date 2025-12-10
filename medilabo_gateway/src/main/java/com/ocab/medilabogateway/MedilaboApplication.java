@@ -2,9 +2,7 @@ package com.ocab.medilabogateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerResponse;
 
@@ -12,15 +10,11 @@ import static org.springframework.cloud.gateway.server.mvc.filter.BeforeFilterFu
 import static org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions.route;
 import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.http;
 
-
-@ServletComponentScan
-@SpringBootApplication
-@ComponentScan({
-        "com.ocab.medilabopatient.repository"
-})
+@SpringBootApplication()
 public class MedilaboApplication {
     private static final String PATH_PATIENT_URI = "http://localhost:8081";
     private static final String PATH_REPORT_URI = "http://localhost:8082";
+    private static final String PATH_DIABETES_RISKS_URI = "http://localhost:8083";
 
     @Bean
     public RouterFunction<ServerResponse> patientRoutes() {
@@ -36,11 +30,10 @@ public class MedilaboApplication {
                         .POST("/patient", http())
                         .before(uri(PATH_PATIENT_URI))
                         .build())
-                .and(route("patient_delete")
-                        .DELETE("/patient/delete/{id}", http())
+                .and(route("update_patient")
+                        .PUT("/patient", http())
                         .before(uri(PATH_PATIENT_URI))
-                        .build()
-                );
+                        .build());
     }
 
     @Bean
@@ -58,6 +51,14 @@ public class MedilaboApplication {
                         .before(uri(PATH_REPORT_URI))
                         .build()
                 );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> diabetesRiskRoutes() {
+        return route("risks_diabetes")
+                .GET("/diabetes", http())
+                .before(uri(PATH_DIABETES_RISKS_URI))
+                .build();
     }
 
     public static void main(String[] args) {
