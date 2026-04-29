@@ -1,0 +1,132 @@
+name: medilabo
+
+services:
+  patient:
+    image: medilabopatient:001
+    build:
+      context: "https://github.com/BertonAurelie/medilabo_back.git#master:medilabopatient"
+      dockerfile: Dockerfile
+    container_name: patient
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/medilabo_patient?serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    networks:
+      - my_network
+
+  report:
+    image: medilaboreport:001
+    build:
+      context: "https://github.com/BertonAurelie/medilabo_back.git#master:medilaboreport"
+    container_name: report
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      - MONGODB_URI_REPORT=mongodb://mongodb:27017/medilabo_report_db
+    networks:
+      - my_network
+
+  diabetes:
+    image: medilabodiabetes:001
+    build:
+      context: "https://github.com/BertonAurelie/medilabo_back.git#master:medilabodiabetes"
+    container_name: diabetes
+    depends_on:
+      mysql:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    environment:
+      - MONGODB_URI_REPORT=mongodb://mongodb:27017/medilabo_report_db
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/medilabo_patient?serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    networks:
+      - my_network
+
+  front:
+    image: medilabofront:001
+    build:
+      context: "https://github.com/BertonAurelie/medilabo_front.git#master"
+    container_name: front
+    depends_on:
+    - gateway
+    ports:
+      - "80:80"
+    networks:
+      - my_network
+
+
+  gateway:
+    image: medilabogateway:001
+    build:
+      context: "https://github.com/BertonAurelie/medilabo_back.git#master:medilabo_gateway"
+    container_name: gateway
+    depends_on:
+      diabetes:
+        condition: service_started
+      patient:
+        condition: service_started
+      report:
+        condition: service_started
+      mongodb:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGODB_URI_REPORT=mongodb://mongodb:27017/medilabo_report_db
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/medilabo_patient?serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    networks:
+      - my_network
+
+  mysql:
+    image: mysql:8.0.17
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_DATABASE: medilabo_patient
+    volumes:
+      - ./medilabomysql/data:/docker-entrypoint-initdb.d
+      - mysql-data:/var/lib/mysql
+    networks:
+      - my_network
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost", '-u', '$$MYSQL_USER', '-p$$MYSQL_ROOT_PASSWORD' ]
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - my_network
+    command: ["mongod", "--quiet", "--setParameter", "logComponentVerbosity={network:{verbosity:-1},accessControl:{verbosity:-1}}"]
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval \"db.adminCommand('ping').ok\" >/dev/null 2>&1"]
+      interval: 24h
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  mongodb-data:
