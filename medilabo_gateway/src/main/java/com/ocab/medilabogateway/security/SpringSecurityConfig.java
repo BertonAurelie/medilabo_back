@@ -69,7 +69,9 @@ public class SpringSecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost", "http://localhost:80")
+                        .allowedOrigins("http://localhost", "http://localhost:80",
+                                "http://127.0.0.1",
+                                "http://127.0.0.1:80")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("Content-Type", "Authorization")
                         .allowCredentials(true);

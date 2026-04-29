@@ -39,7 +39,6 @@
 			<version>${starter.version}</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<dependencyManagement>
