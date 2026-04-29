@@ -26,35 +26,68 @@ public class triggersDiabetesTest {
     private ReportService reportService;
 
     @Test
-    public void givenString_whenResearchDiabetesTriggersOfPatient_thenReturnNumberOfTriggersDiabetesPatient() throws IOException {
+    public void givenInfoPatient_whenResearchDiabetesTriggers_thenReturnNone() throws IOException {
         Date date = new Date();
-        Report report = new Report("0",0,date,"je Poids et à la anormal du patient");
-        Report report1 = new Report("01",0,date,"je Cholestérol et à la anormal du patient");
+        Report report = new Report("0", 0, date, "Le patient déclare qu'il 'se sent très bien' Poids égal ou inférieur au poids recommandé");
         List<Report> reports = new ArrayList<>();
         reports.add(report);
-        reports.add(report1);
 
         when(reportService.getAllReportOfThisPatient(0)).thenReturn(reports);
 
-        int result = diabetesService.researchDiabetesTriggersOfPatient(0);
-        assertEquals(3, result);
+        String result = diabetesService.countOfDiabetesTriggersAndPatientAge(0, 59, "f");
+        assertEquals("none", result);
     }
 
     @Test
-    public void givenInfoPatient_whenResearchDiabetesTriggers_thenReturnChanceToHaveDiabetes() throws IOException {
+    public void givenInfoPatient_whenResearchDiabetesTriggers_thenReturnBorderline() throws IOException {
         Date date = new Date();
-        Report report = new Report("0",0,date,"je Poids et à la anormal du patient");
-        Report report1 = new Report("01",0,date,"je Cholestérol et à la anormal du patient");
+        Report report = new Report("0", 0, date, "Le patient déclare qu'il ressent beaucoup de stress au travail il se plaint également que son audition est anormale dernièrement");
+        Report report1 = new Report("0", 0, date, "Le patient déclare avoir fait une réaction aux médicaments au cours des 3 derniers mois il remarque également que son audition continue d'être anormale");
         List<Report> reports = new ArrayList<>();
         reports.add(report);
         reports.add(report1);
 
         when(reportService.getAllReportOfThisPatient(0)).thenReturn(reports);
 
-        String result = diabetesService.countOfDiabetesTriggersAndPatientAge(0,31,"m");
+        String result = diabetesService.countOfDiabetesTriggersAndPatientAge(0, 80, "m");
         assertEquals("borderline", result);
-
     }
 
+    @Test
+    public void givenInfoPatient_whenResearchDiabetesTriggers_thenReturnInDanger() throws IOException {
+        Date date = new Date();
+        Report report = new Report("0", 0, date, "Le patient déclare qu'il fume depuis peu");
+        Report report1 = new Report("0", 0, date, "Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière il se plait également de crises d'apnée respiratoire anormales Tests de laboratoire indiquant un taux de cholestérol LDL élevé");
+        List<Report> reports = new ArrayList<>();
+        reports.add(report);
+        reports.add(report1);
 
+        when(reportService.getAllReportOfThisPatient(0)).thenReturn(reports);
+
+        String result = diabetesService.countOfDiabetesTriggersAndPatientAge(0, 21, "m");
+        assertEquals("in danger", result);
+    }
+
+    @Test
+    public void givenInfoPatient_whenResearchDiabetesTriggers_thenReturnEarlyOnSet() throws IOException {
+        String note1 = "Le patient déclare qu'il lui est devenu difficile de monter les escaliers il se plaint également d'être essouflé Tests de laboratoire indiquant que les anticorps sont élevés Reaction aux médicaments";
+        String note2 = "Le patient déclare qu'il a mal au dos lorsqu'il reste assis pendant longtemps";
+        String note3 = "Le patient déclare avoir commencé à fumer depuis peu Hémoglobine A1C supérieure au niveau recommandé";
+        String note4 = "Taille, Poids, Cholestérol, Vertige et Réaction";
+        Date date = new Date();
+        Report report1 = new Report("0", 0, date, note1);
+        Report report2 = new Report("0", 0, date, note2);
+        Report report3 = new Report("0", 0, date, note3);
+        Report report4 = new Report("0", 0, date, note4);
+        List<Report> reports = new ArrayList<>();
+        reports.add(report1);
+        reports.add(report2);
+        reports.add(report3);
+        reports.add(report4);
+
+        when(reportService.getAllReportOfThisPatient(0)).thenReturn(reports);
+
+        String result = diabetesService.countOfDiabetesTriggersAndPatientAge(0, 23, "f");
+        assertEquals("early onset", result);
+    }
 }

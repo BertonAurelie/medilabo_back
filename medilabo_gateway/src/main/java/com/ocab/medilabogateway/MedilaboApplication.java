@@ -12,9 +12,9 @@ import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFuncti
 
 @SpringBootApplication()
 public class MedilaboApplication {
-    private static final String PATH_PATIENT_URI = "http://localhost:8081";
-    private static final String PATH_REPORT_URI = "http://localhost:8082";
-    private static final String PATH_DIABETES_RISKS_URI = "http://localhost:8083";
+    private static final String PATH_PATIENT_URI = "http://patient:8081";
+    private static final String PATH_REPORT_URI = "http://report:8082";
+    private static final String PATH_DIABETES_RISKS_URI = "http://diabetes:8083";
 
     @Bean
     public RouterFunction<ServerResponse> patientRoutes() {
@@ -22,16 +22,20 @@ public class MedilaboApplication {
                 .GET("/patient", http())
                 .before(uri(PATH_PATIENT_URI))
                 .build()
-                .and(route("patient_delete")
+                .and(route("get_one_patient")
                         .GET("/patient/{id}", http())
                         .before(uri(PATH_PATIENT_URI))
                         .build())
                 .and(route("add_new_patient")
-                        .POST("/patient", http())
+                        .POST("/patient/add", http())
                         .before(uri(PATH_PATIENT_URI))
                         .build())
                 .and(route("update_patient")
                         .PUT("/patient", http())
+                        .before(uri(PATH_PATIENT_URI))
+                        .build())
+                .and(route("patient_delete")
+                        .DELETE("/patient/delete/{id}", http())
                         .before(uri(PATH_PATIENT_URI))
                         .build());
     }

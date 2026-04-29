@@ -36,27 +36,27 @@ public class DiabetesService {
                 trigger = "borderline";
             } else if (count == 6 || count == 7) {
                 trigger = "in danger";
-            } else if(count >= 8){
+            } else if (count >= 8) {
                 trigger = "early onset";
             }
         }
 
         if (age < 30) {
             if (gender.equalsIgnoreCase("m")) {
-                if(count >= 3){
+                if (count >= 3) {
                     trigger = "in danger";
                 }
-                if(count >=5){
-                    trigger ="early onset";
+                if (count >= 5) {
+                    trigger = "early onset";
                 }
             }
             if (gender.equalsIgnoreCase("f")) {
-                if(count >= 4){
+                if (count >= 4) {
                     trigger = "in danger";
                 }
 
-                if(count >= 7){
-                    trigger ="early onset";
+                if (count >= 7) {
+                    trigger = "early onset";
                 }
             }
         }
@@ -76,14 +76,24 @@ public class DiabetesService {
 
         for (Report report : reportsOfPatient) {
             String[] patientReport = report.getNote().split(" ");
+            String previousCleaned = null;
             for (String word : patientReport) {
-                String cleaned = word.toLowerCase().replaceAll("[^a-zA-Zàâçéèêëîïôûùüÿñæœ]", "");
+                String cleaned = word.toLowerCase().replaceAll("[^a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]", "");
                 logger.info("wordTest : {}", word);
+
+                if (previousCleaned != null && (previousCleaned.equals("hémoglobine")) && cleaned.equals("a1c")) {
+                    count++;
+                    logger.info("Trigger détecté : Hémoglobine A1C");
+                    previousCleaned = cleaned;
+                    continue;
+                }
+
                 if (line.contains(cleaned)) {
                     count++;
                     logger.info("word : {}", word);
                     line.remove(cleaned);
                 }
+                previousCleaned = cleaned;
             }
         }
 

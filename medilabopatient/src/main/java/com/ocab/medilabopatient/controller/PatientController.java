@@ -79,8 +79,8 @@ public class PatientController {
      * @param id
      * @return true if patient deleted
      */
-    @DeleteMapping()
-    public ResponseEntity<Void> deletePatient(@RequestParam int id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deletePatient(@PathVariable int id) {
         logger.info("deleting patient...");
         patientService.deletePatient(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

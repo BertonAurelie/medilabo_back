@@ -4,9 +4,13 @@ Taille
 Poids
 Fumeurs
 Fumeuse
+Fumeur
 Anormal
+Anormale
+Anormales
 Cholestérol
 Vertiges
+Vertige
 Rechute
 Réaction
 Anticorps
