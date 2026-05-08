@@ -4,8 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d391312-0a95-41a5-8983-8d0b94057314" name="Changes" comment="add patient gateway routes">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="4d391312-0a95-41a5-8983-8d0b94057314" name="Changes" comment="push docker compose">
+      <change afterPath="$PROJECT_DIR$/medilabodb/mongodb/medilabo_report_db.report.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabo_gateway/src/main/java/com/ocab/medilabogateway/controller/MedilaboController.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabo_gateway/src/main/java/com/ocab/medilabogateway/controller/MedilaboController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabo_gateway/src/main/java/com/ocab/medilabogateway/security/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabo_gateway/src/main/java/com/ocab/medilabogateway/security/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabodiabetes/src/main/java/com/ocab/mediladiabetes/controller/DiabetesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabodiabetes/src/main/java/com/ocab/mediladiabetes/controller/DiabetesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabodiabetes/src/main/java/com/ocab/mediladiabetes/service/DiabetesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabodiabetes/src/main/java/com/ocab/mediladiabetes/service/DiabetesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabomysql/data/database.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/config/PasswordConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/config/PasswordConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/exception/MedilaboPatientException.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/exception/MedilaboPatientException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/mapper/PatientDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/mapper/PatientDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/mapper/PatientWithAgeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/mapper/PatientWithAgeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/request/PatientDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/request/PatientDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/request/PatientUpdatedDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/request/PatientUpdatedDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/response/PatientWithAgeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/model/dto/response/PatientWithAgeDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/repository/PatientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/repository/PatientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilabopatient/src/main/java/com/ocab/medilabopatient/service/PatientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/MedilaboreportApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/MedilaboreportApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/exception/MedilaboReportException.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/exception/MedilaboReportException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/medilaboreport/src/main/java/com/ocab/medilaboreport/repository/ReportRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +50,16 @@
     &quot;accountId&quot;: &quot;1474dcd4-3568-4bab-8db5-155fe1738795&quot;
   }
 }</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -37,14 +70,102 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Docker.docker-compose.yml.report: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.front: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/lidingway/Desktop/formation_OC/java/projet9/medilabo_projet&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lidingway/Desktop/formation_OC/java/projet9/front&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabodiabetes\src\main\resources\lib" />
+      <recent name="C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabodiabetes\src\main\resources" />
+      <recent name="C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabo_gateway\src\main\resources\lib" />
+      <recent name="C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabo_gateway\src\main\resources" />
+      <recent name="C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilaboreport" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabodiabetes\src\main\resources\lib\ocab" />
+      <recent name="C:\Users\lidingway\Desktop\formation_OC\java\projet9\medilabo_projet\medilabodiabetes\src\main\resources\lib\com" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ocab.medilabopatient.model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="medilabo_projet" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="medilabo_projet" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="commandLineOptions" value="--build" />
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.report: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="report" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="front: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="../front/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.docker-compose.yml.report: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      <item itemvalue="Docker.front: Compose Deployment" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.front: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.report: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -62,11 +183,95 @@
       <option name="project" value="LOCAL" />
       <updated>1761844244410</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Premeire version docker compose">
+      <option name="closed" value="true" />
+      <created>1777474431453</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1777474431453</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add madilaboreport as local dependency because it's not deploy on a maven repo">
+      <option name="closed" value="true" />
+      <created>1777478255352</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1777478255352</updated>
+    </task>
+    <task id="LOCAL-00004" summary="push init db">
+      <option name="closed" value="true" />
+      <created>1777479958346</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1777479958346</updated>
+    </task>
+    <task id="LOCAL-00005" summary="push cors modification">
+      <option name="closed" value="true" />
+      <created>1777504840004</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1777504840004</updated>
+    </task>
+    <task id="LOCAL-00006" summary="push docker compose">
+      <option name="closed" value="true" />
+      <created>1777505686466</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1777505686466</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="docker-compose.yml" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add patient gateway routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="add patient gateway routes" />
+    <MESSAGE value="Premeire version docke compose" />
+    <MESSAGE value="Premeire version docker compose" />
+    <MESSAGE value="Add madilaboreport as local dependency because it's not deploy on a maven repo" />
+    <MESSAGE value="push init db" />
+    <MESSAGE value="push cors modification" />
+    <MESSAGE value="push docker compose" />
+    <option name="LAST_COMMIT_MESSAGE" value="push docker compose" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/medilabo_gateway/src/main/java/com/ocab/medilabogateway/MedilaboApplication.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/medilabo_gateway/src/main/java/com/ocab/medilabogateway/MedilaboApplication.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/medilabo_gateway/src/main/java/com/ocab/medilabogateway/security/SpringSecurityConfig.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

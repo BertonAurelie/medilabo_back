@@ -85,43 +85,49 @@ services:
     networks:
       - my_network
 
+
   mysql:
-    image: mysql:8.0.17
+    build:
+      context: "https://github.com/BertonAurelie/medilabo_back.git#master:medilabodb"
+      dockerfile: Dockerfile.mysql
+    image: medilabomysql:001
     container_name: mysql-db
     environment:
+      MYSQL_DATABASE: medilabo_patientspring.data.mongodb.uri=${MONGODB_URI_REPORT}
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: root
-      MYSQL_DATABASE: medilabo_patient
-    volumes:
-      - ./medilabomysql/data:/docker-entrypoint-initdb.d
-      - mysql-data:/var/lib/mysql
-    networks:
-      - my_network
     ports:
       - "3306:3306"
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost", '-u', '$$MYSQL_USER', '-p$$MYSQL_ROOT_PASSWORD' ]
-      start_period: 5s
-      interval: 5s
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "$$MYSQL_USER", "-p$$MYSQL_ROOT_PASSWORD"]
       timeout: 5s
-      retries: 20
+      interval: 5s
+      retries: 55
+      start_period: 5s
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - my_network
 
   mongodb:
-    image: mongo:7
+    build:
+      context: "https://github.com/BertonAurelie/medilabo_back.git#master:medilabodb"
+      dockerfile: Dockerfile.mongo
+    image: medilabomongo:001
     container_name: mongodb
     ports:
       - "27017:27017"
-    volumes:
-      - mongodb-data:/data/db
-    networks:
-      - my_network
-    command: ["mongod", "--quiet", "--setParameter", "logComponentVerbosity={network:{verbosity:-1},accessControl:{verbosity:-1}}"]
+    command: ["mongod", "--quiet"]
     healthcheck:
       test: ["CMD-SHELL", "mongosh --quiet --eval \"db.adminCommand('ping').ok\" >/dev/null 2>&1"]
       interval: 24h
       timeout: 5s
       retries: 10
       start_period: 5s
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - my_network
 
 networks:
   my_network:

@@ -1,0 +1,99 @@
+[{
+  "_id": {
+    "$oid": "69fdbcebad02bdf0939eb74d"
+  },
+  "patient": 1,
+  "dateNote": {
+    "$date": "2026-05-08T10:37:31.843Z"
+  },
+  "note": "Le patient déclare qu'il 'se sent très bien' Poids égal ou inférieur au poids recommandé",
+  "_class": "com.ocab.medilaboreport.model.Report"
+},
+{
+  "_id": {
+    "$oid": "69fdbcf6ad02bdf0939eb74e"
+  },
+  "patient": 2,
+  "dateNote": {
+    "$date": "2026-05-08T10:37:42.032Z"
+  },
+  "note": "Le patient déclare qu'il ressent beaucoup de stress au travail Il se plaint également que son audition est anormale dernièrement",
+  "_class": "com.ocab.medilaboreport.model.Report"
+},
+{
+  "_id": {
+    "$oid": "69fdbcfdad02bdf0939eb74f"
+  },
+  "patient": 2,
+  "dateNote": {
+    "$date": "2026-05-08T10:37:49.042Z"
+  },
+  "note": "Le patient déclare avoir fait une réaction aux médicaments au cours des 3 derniers mois Il remarque également que son audition continue d'être anormale",
+  "_class": "com.ocab.medilaboreport.model.Report"
+},
+{
+  "_id": {
+    "$oid": "69fdbd07ad02bdf0939eb750"
+  },
+  "patient": 3,
+  "dateNote": {
+    "$date": "2026-05-08T10:37:59.684Z"
+  },
+  "note": "Le patient déclare qu'il fume depuis peu",
+  "_class": "com.ocab.medilaboreport.model.Report"
+},
+{
+  "_id": {
+    "$oid": "69fdbd14ad02bdf0939eb751"
+  },
+  "patient": 3,
+  "dateNote": {
+    "$date": "2026-05-08T10:38:12.962Z"
+  },
+  "note": "Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière Il se plaint également de crises d’apnée respiratoire anormales Tests de laboratoire indiquant un taux de cholestérol LDL élevé",
+  "_class": "com.ocab.medilaboreport.model.Report"
+},
+{
+  "_id": {
+    "$oid": "69fdbd2bad02bdf0939eb752"
+  },
+  "patient": 4,
+  "dateNote": {
+    "$date": "2026-05-08T10:38:35.436Z"
+  },
+  "note": " Le patient déclare qu'il lui est devenu difficile de monter les escaliers Il se plaint également d’être essoufflé Tests de laboratoire indiquant que les anticorps sont élevés Réaction aux médicaments",
+  "_class": "com.ocab.medilaboreport.model.Report"
+},
+{
+  "_id": {
+    "$oid": "69fdbd33ad02bdf0939eb753"
+  },
+  "patient": 4,
+  "dateNote": {
+    "$date": "2026-05-08T10:38:43.959Z"
+  },
+  "note": "Le patient déclare qu'il a mal au dos lorsqu'il reste assis pendant longtemps",
+  "_class": "com.ocab.medilaboreport.model.Report"
+},
+{
+  "_id": {
+    "$oid": "69fdbd3bad02bdf0939eb754"
+  },
+  "patient": 4,
+  "dateNote": {
+    "$date": "2026-05-08T10:38:51.090Z"
+  },
+  "note": "Le patient déclare avoir commencé à fumer depuis peu Hémoglobine A1C supérieure au niveau recommandé",
+  "_class": "com.ocab.medilaboreport.model.Report"
+},
+{
+  "_id": {
+    "$oid": "69fdbd41ad02bdf0939eb755"
+  },
+  "patient": 4,
+  "dateNote": {
+    "$date": "2026-05-08T10:38:57.789Z"
+  },
+  "note": " Taille, Poids, Cholestérol, Vertige et Réaction",
+  "_class": "com.ocab.medilaboreport.model.Report"
+}]

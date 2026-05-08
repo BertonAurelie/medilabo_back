@@ -1,0 +1,3 @@
+FROM mongo:7
+
+COPY ./mongodb /docker-entrypoint-initdb.d

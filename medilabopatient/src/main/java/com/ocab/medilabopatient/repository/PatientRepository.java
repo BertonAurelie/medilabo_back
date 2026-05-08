@@ -6,7 +6,17 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * Repository interface for managing Patient entities.
+ */
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
+
+    /**
+     * Find a patient by email address.
+     *
+     * @param email patient email address
+     * @return optional patient
+     */
     Optional<Patient> findByEmail(String email);
 }

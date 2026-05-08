@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -20,22 +21,53 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service class for managing patients.
+ */
 @Service
 public class PatientService {
+
+    /**
+     * Repository used to access patient data.
+     */
     private final PatientRepository patientRepository;
+
+    /**
+     * Encoder used to hash patient passwords.
+     */
     private final PasswordEncoder passwordEncoder;
+
+    /**
+     * Logger for this service.
+     */
     private static final Logger logger = LoggerFactory.getLogger(PatientService.class);
 
+    /**
+     * Constructor for PatientService.
+     *
+     * @param patientRepository repository used to manage patients
+     * @param passwordEncoder password encoder
+     */
     public PatientService(PatientRepository patientRepository, PasswordEncoder passwordEncoder) {
         this.patientRepository = patientRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    //Liste de patients
+    /**
+     * Get all patients.
+     *
+     * @return list of patients
+     */
     public List<Patient> getAllPatient() {
         return patientRepository.findAll();
     }
 
+    /**
+     * Get patient information with calculated age.
+     *
+     * @param id patient id
+     * @return patient information with age
+     */
     public PatientWithAgeDto getPatientInfo(int id) {
         PatientWithAgeDto patientToDto;
         int age;
@@ -43,9 +75,12 @@ public class PatientService {
 
         if (patient.isPresent()) {
             Patient optionalToPatient = patient.get();
+
+            // Calculate patient age from birthday
             age = getAge(patient.get().getBirthday());
             logger.info(String.valueOf(age));
 
+            // Convert patient entity to DTO with age
             patientToDto = new PatientWithAgeMapper().toDto(optionalToPatient, age);
 
         } else {
@@ -55,80 +90,110 @@ public class PatientService {
         return patientToDto;
     }
 
-    //Ajout d'un patient
+    /**
+     * Add a new patient.
+     *
+     * @param dto patient data
+     * @return saved patient
+     */
     public Patient addPatient(PatientDto dto) {
+
+        // Convert DTO to entity
         Patient patient = new PatientDtoMapper().toEntity(dto);
 
         if (patientRepository.findByEmail(patient.getEmail()).isEmpty()) {
-            logger.info("patient inconnu, enregistrement en cours");
+            logger.info("patient unknown, registration in progress");
+
+            // Encode password before saving patient
             patient.setPassword(passwordEncoder.encode(dto.getPassword()));
+
             patient = patientRepository.save(patient);
         } else {
-            logger.info("patient déjà enregistré");
+            logger.info("patient already registered");
             throw new MedilaboPatientException("patient already saved", HttpStatus.OK);
         }
+
         return patient;
     }
 
-    //modification d'un patient
+    /**
+     * Update an existing patient.
+     *
+     * @param dto updated patient data
+     * @return updated patient
+     */
     public Patient updatePatient(PatientUpdatedDto dto) {
         Optional<Patient> optionalPatient = patientRepository.findById(dto.getId());
 
         if (optionalPatient.isEmpty()) {
-            logger.info("patient introuvable");
+            logger.info("patient not found");
             throw new MedilaboPatientException("patient not found", HttpStatus.NOT_FOUND);
         }
+
         Patient patientToUpdate = optionalPatient.get();
 
+        // Update only provided fields
         if (dto.getLastName() != null) {
             patientToUpdate.setLastName(dto.getLastName());
         }
         if (dto.getFirstName() != null) {
             patientToUpdate.setFirstName(dto.getFirstName());
         }
-
         if (dto.getBirthday() != null) {
             patientToUpdate.setBirthday(dto.getBirthday());
         }
-
         if (dto.getAddress() != null) {
             patientToUpdate.setAddress(dto.getAddress());
         }
-
         if (dto.getGender() != null) {
             patientToUpdate.setGender(dto.getGender());
         }
-
         if (dto.getEmail() != null) {
             patientToUpdate.setEmail(dto.getEmail());
         }
-
         if (dto.getPhoneNumber() != null) {
             patientToUpdate.setPhoneNumber(dto.getPhoneNumber());
         }
 
-        logger.info("sauvegarde du patient modifié");
+        logger.info("saving updated patient");
 
         patientRepository.save(patientToUpdate);
 
         return patientToUpdate;
     }
 
-    //suppression d'un patient
+    /**
+     * Delete a patient by id.
+     *
+     * @param id patient id
+     * @return true if patient is deleted
+     */
     public Boolean deletePatient(int id) {
         if (patientRepository.existsById(id)) {
-            logger.info("suppression de l'utilisateur");
+            logger.info("deleting patient");
             patientRepository.deleteById(id);
         } else {
-            logger.info("utilisateur inconnu");
+            logger.info("patient unknown");
             throw new MedilaboPatientException("patient unknown", HttpStatus.NOT_FOUND);
         }
 
         return true;
     }
 
+    /**
+     * Calculate age from birthday.
+     *
+     * @param birthday patient birthday
+     * @return calculated age
+     */
     private int getAge(Date birthday) {
-        LocalDate birthdayLocalDate = birthday.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        // Convert Date to LocalDate
+        LocalDate birthdayLocalDate = birthday.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+
+        // Calculate period between birthday and current date
         Period periodBetween = Period.between(birthdayLocalDate, LocalDate.now());
 
         return periodBetween.getYears();
